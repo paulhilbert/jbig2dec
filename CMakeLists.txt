@@ -10,6 +10,7 @@ target_link_libraries(jbig2dec "dl")
 
 add_definitions(-DHAVE_STDINT_H)
 
+file (GLOB_RECURSE inc RELATIVE "${PROJECT_SOURCE_DIR}" "*.h")
 # install binary
 if (WIN32)
     install (FILES "${PROJECT_BINARY_DIR}/libjbig2dec.dll.a" DESTINATION lib)
@@ -19,4 +20,4 @@ else()
     install (TARGETS jbig2dec DESTINATION lib)
 endif()
 # install header
-install (DIRECTORY include/ DESTINATION include/jbig2dec)
+install (FILES ${inc} DESTINATION include/jbig2dec)
